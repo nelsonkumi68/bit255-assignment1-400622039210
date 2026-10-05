@@ -1,0 +1,288 @@
+/* ===========================================================
+   BlueLib — warm reading-room theme
+   Layout: sidebar + main on desktop, stacked on mobile.
+   =========================================================== */
+
+:root {
+  --cream:      #faf7f2;
+  --paper:      #ffffff;
+  --maroon:     #c91717;
+  --terracotta: #0704cc;
+  --tan:        #e3d9c9;
+  --ink:        #2b2521;
+  --muted:      #7a6f63;
+  --green:      #4f6b3a;
+  --red:        #8c2f2f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--maroon);
+  margin: 0 0 0.4rem;
+  font-weight: normal;
+}
+
+/* ---- Masthead ---- */
+.masthead {
+  background: var(--maroon);
+  color: var(--cream);
+  padding: 2rem 1.25rem;
+  border-bottom: 4px solid var(--terracotta);
+}
+.masthead__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.masthead__logo {
+  color: var(--cream);
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.masthead__sub {
+  margin: 0.25rem 0 0;
+  color: #d9c7b8;
+  font-size: 0.9rem;
+}
+
+/* ---- Two-column page ---- */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 3rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+.sidebar__block {
+  background: var(--paper);
+  border: 1px solid var(--tan);
+  border-left: 4px solid var(--terracotta);
+  padding: 1rem 1.1rem 1.25rem;
+}
+.sidebar__title {
+  font-size: 1.1rem;
+  margin: 0 0 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--tan);
+}
+
+/* ---- Inputs ---- */
+.input-group {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.input-group__label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+.input-group input,
+.input-group select {
+  width: 100%;
+  font: inherit;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid var(--tan);
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 2px rgba(168, 85, 58, 0.15);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  font: inherit;
+  padding: 0.55rem 0.9rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn--solid {
+  width: 100%;
+  background: var(--terracotta);
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+.btn--solid:hover {
+  background: #8a4430;
+}
+.btn--borrow {
+  width: 100%;
+  margin-top: auto;
+  background: transparent;
+  color: var(--terracotta);
+  border-color: var(--terracotta);
+}
+.btn--borrow:hover:not(:disabled) {
+  background: var(--terracotta);
+  color: #fff;
+}
+.btn:disabled {
+  background: #e8e2d8;
+  color: #a89e8f;
+  border-color: #e8e2d8;
+  cursor: not-allowed;
+}
+
+/* ---- Feedback messages ---- */
+.feedback {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+.feedback--error   { color: var(--red); }
+.feedback--success { color: var(--green); }
+
+/* ---- Main catalogue ---- */
+.catalogue {
+  flex: 1;
+  min-width: 0;
+}
+.catalogue__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid var(--maroon);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.catalogue__title {
+  margin: 0;
+  font-size: 1.4rem;
+}
+.catalogue__counter {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---- Cards (Flexbox, wrapping) ---- */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.card {
+  flex: 0 0 calc(33.333% - 0.833rem);   /* 3 per row on desktop */
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--tan);
+  border-left: 3px solid var(--tan);
+  padding: 1rem 1.1rem 1.1rem;
+  transition: border-left-color 0.15s, background 0.15s;
+}
+.card:hover {
+  border-left-color: var(--terracotta);
+  border-left-width: 6px;
+}
+.card--out {
+  background: #f2ece2;
+  opacity: 0.85;
+}
+
+.card__title {
+  font-size: 1.05rem;
+  margin: 0 0 0.15rem;
+}
+.card__author {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.card__cat {
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--terracotta);
+  font-weight: bold;
+}
+.card__stock {
+  margin: 0 0 0.9rem;
+  font-size: 0.85rem;
+  color: var(--green);
+  font-weight: bold;
+}
+.card--out .card__stock {
+  color: var(--red);
+}
+
+.cards__empty {
+  width: 100%;
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---- Footer ---- */
+.foot {
+  background: var(--maroon);
+  color: #d9c7b8;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+.foot p { margin: 0; }
+
+/* ===========================================================
+   RESPONSIVE
+   Desktop (default) : 3 cards/row, sidebar beside main
+   Tablet (<=1000px) : 2 cards/row, sidebar still beside
+   Mobile (<=700px)  : 1 card/row, sidebar stacked on top
+   =========================================================== */
+
+@media (max-width: 1000px) {
+  .card {
+    flex: 0 0 calc(50% - 0.625rem);   /* 2 per row */
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .sidebar {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  .card {
+    flex: 0 0 100%;   /* 1 per row */
+  }
+  .catalogue__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
